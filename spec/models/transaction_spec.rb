@@ -10,7 +10,7 @@ RSpec.describe Transaction, type: :model do
   end
 
   describe 'relationships' do
-    it { should belong_to :invoice}
+    it { should belong_to :invoice }
   end
 
   describe 'methods' do
