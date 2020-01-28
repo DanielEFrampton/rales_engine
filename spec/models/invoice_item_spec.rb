@@ -1,6 +1,8 @@
 # frozen_string_literal: true
+
 require 'rails_helper'
 
+# Joins table between Invoice and Item models
 RSpec.describe InvoiceItem, type: :model do
   describe 'validations' do
     it { should validate_presence_of :quantity }
