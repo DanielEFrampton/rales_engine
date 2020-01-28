@@ -1,3 +1,4 @@
+# Confirmation of interaction betwen Merchant and Customer
 class Invoice < ApplicationRecord
   validates_presence_of :status
 

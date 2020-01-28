@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-# Record of credit-card charge associated with an Invoice
+# Transaction model test
 RSpec.describe Transaction, type: :model do
   describe 'validations' do
     it { should validate_presence_of :credit_card_number }

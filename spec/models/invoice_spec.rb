@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-# Confirmation of interaction betwen Merchant and Customer
+# Invoice model test
 RSpec.describe Invoice, type: :model do
   describe 'validations' do
     it { should validate_presence_of :status }

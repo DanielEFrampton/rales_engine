@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-# Customers
+# Customer model test
 RSpec.describe Customer, type: :model do
   describe 'validations' do
     it { should validate_presence_of :first_name }
