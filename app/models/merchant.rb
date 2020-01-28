@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Merchant who sells Items to Customers
 class Merchant < ApplicationRecord
   validates_presence_of :name

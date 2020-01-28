@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Items sold by Merchants
 class Item < ApplicationRecord
   validates_presence_of :name, :description, :unit_price
