@@ -2,6 +2,8 @@
 require 'simplecov'
 SimpleCov.start
 
+require 'faker'
+
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 
