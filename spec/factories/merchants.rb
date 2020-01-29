@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :merchant do
-    name { 'Joe Merchant' }
+    name { Faker::Name.name }
   end
 end
