@@ -21,20 +21,23 @@ RSpec.describe 'As a visitor', type: :request do
       expect(@hash["data"][0]["id"]).to eq("#{@merchant_1.id}")
       expect(@hash["data"][0]["type"]).to eq("merchant")
       expect(@hash["data"][0]["attributes"].class).to eq(Hash)
-      expect(@hash["data"][0]["attributes"].length).to eq(1)
+      expect(@hash["data"][0]["attributes"].length).to eq(2)
       expect(@hash["data"][0]["attributes"]["name"]).to eq("#{@merchant_1.name}")
+      expect(@hash["data"][0]["attributes"]["id"]).to eq(@merchant_1.id)
 
       expect(@hash["data"][1]["id"]).to eq("#{@merchant_2.id}")
       expect(@hash["data"][1]["type"]).to eq("merchant")
       expect(@hash["data"][1]["attributes"].class).to eq(Hash)
-      expect(@hash["data"][1]["attributes"].length).to eq(1)
+      expect(@hash["data"][1]["attributes"].length).to eq(2)
       expect(@hash["data"][1]["attributes"]["name"]).to eq("#{@merchant_2.name}")
+      expect(@hash["data"][1]["attributes"]["id"]).to eq(@merchant_2.id)
 
       expect(@hash["data"][2]["id"]).to eq("#{@merchant_3.id}")
       expect(@hash["data"][2]["type"]).to eq("merchant")
       expect(@hash["data"][2]["attributes"].class).to eq(Hash)
-      expect(@hash["data"][2]["attributes"].length).to eq(1)
+      expect(@hash["data"][2]["attributes"].length).to eq(2)
       expect(@hash["data"][2]["attributes"]["name"]).to eq("#{@merchant_3.name}")
+      expect(@hash["data"][2]["attributes"]["id"]).to eq(@merchant_3.id)
     end
   end
 end
