@@ -25,8 +25,8 @@ RSpec.describe 'As a visitor', type: :request do
 
       expect(@attributes.class).to eq(Hash)
       expect(@attributes.length).to eq(3)
-      expect(@attributes['first_name']).to eq(@customer_1.name.to_s)
-      expect(@attributes['last_name']).to eq(@customer_1.name.to_s)
+      expect(@attributes['first_name']).to eq(@customer_1.first_name.to_s)
+      expect(@attributes['last_name']).to eq(@customer_1.last_name.to_s)
       expect(@attributes['id']).to eq(@customer_1.id)
 
       expect(@hash.to_s).not_to include(@customer_2.id.to_s)
