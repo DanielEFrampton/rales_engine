@@ -3,3 +3,6 @@ Naming/VariableNumber:
 
 Metrics/BlockLength:
   ExcludedMethods: describe, it
+
+Style/SymbolArray:
+  Enabled: false
