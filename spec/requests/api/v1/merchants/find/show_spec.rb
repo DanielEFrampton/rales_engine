@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'As a visitor', type: :request do
@@ -25,7 +27,7 @@ RSpec.describe 'As a visitor', type: :request do
         expect(@hash['data']['type']).to eq('merchant')
         expect(@hash['data']['attributes'].class).to eq(Hash)
         expect(@hash['data']['attributes'].length).to eq(2)
-        expect(@hash['data']['attributes']['name']).to eq()@merchant_2.name.to_s)
+        expect(@hash['data']['attributes']['name']).to eq(@merchant_2.name.to_s)
         expect(@hash['data']['attributes']['id']).to eq(@merchant_2.id)
 
         expect(@hash.to_s).not_to include(@merchant_1.name.to_s)
