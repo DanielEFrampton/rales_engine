@@ -7,12 +7,12 @@ RSpec.describe 'As a visitor', type: :request do
     @merchant_1 = create(:merchant)
     @merchant_2 = create(:merchant)
     @merchant_3 = create(:merchant)
+    @ids = [@merchant_1.id, @merchant_2.id, @merchant_3.id]
+    @names = [@merchant_1.name, @merchant_2.name, @merchant_3.name]
   end
 
   describe 'when I send a get request to the merchants random path' do
     before(:each) do
-      srand(123) # Arbitrarily set RNG seed so that .sample always picks third
-
       get '/api/v1/merchants/random'
       @hash = JSON.parse(response.body)
     end
@@ -23,15 +23,13 @@ RSpec.describe 'As a visitor', type: :request do
       expect(@hash['data'].length).to eq(3)
       expect(@hash['data'].class).to eq(Hash)
 
-      expect(@hash['data']['id']).to eq(@merchant_3.id.to_s)
+      expect(@ids).to include(@hash['data']['id'].to_i)
       expect(@hash['data']['type']).to eq('merchant')
+
       expect(@hash['data']['attributes'].class).to eq(Hash)
       expect(@hash['data']['attributes'].length).to eq(2)
-      expect(@hash['data']['attributes']['name']).to eq(@merchant_3.name.to_s)
-      expect(@hash['data']['attributes']['id']).to eq(@merchant_3.id)
-
-      expect(@hash.to_s).not_to include(@merchant_1.name)
-      expect(@hash.to_s).not_to include(@merchant_2.name)
+      expect(@names).to include(@hash['data']['attributes']['name'])
+      expect(@ids).to include(@hash['data']['attributes']['id'])
     end
   end
 end
