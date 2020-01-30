@@ -3,8 +3,8 @@
 # Controller for Find Single Merchant Endpoint
 class Api::V1::Merchants::FindController < ApplicationController
   def show
-    if parameters[:name]
-      merchant = Merchant.ci_name_find(parameters[:name])
+    if name = parameters[:name]
+      merchant = Merchant.ci_name_find(name)
     else
       merchant = Merchant.find_by(parameters)
     end
@@ -12,8 +12,8 @@ class Api::V1::Merchants::FindController < ApplicationController
   end
 
   def index
-    if parameters[:name]
-      merchants = Merchant.ci_name_find_all(parameters[:name])
+    if name = parameters[:name]
+      merchants = Merchant.ci_name_find_all(name)
     else
       merchants = Merchant.where(parameters)
     end
