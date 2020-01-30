@@ -9,6 +9,8 @@ RSpec.describe 'As a visitor', type: :request do
 
   describe 'when I send a get request to the merchants random path' do
     before(:each) do
+      srand(123) # Arbitrarily set RNG seed so that .sample always picks third
+
       get "/api/v1/merchants/random"
       @hash = JSON.parse(response.body)
     end
@@ -19,15 +21,15 @@ RSpec.describe 'As a visitor', type: :request do
       expect(@hash["data"].length).to eq(3)
       expect(@hash["data"].class).to eq(Hash)
 
-      expect(@hash["data"]["id"]).to eq("#{@merchant_1.id}")
+      expect(@hash["data"]["id"]).to eq("#{@merchant_3.id}")
       expect(@hash["data"]["type"]).to eq("merchant")
       expect(@hash["data"]["attributes"].class).to eq(Hash)
       expect(@hash["data"]["attributes"].length).to eq(2)
-      expect(@hash["data"]["attributes"]["name"]).to eq("#{@merchant_1.name}")
-      expect(@hash["data"]["attributes"]["id"]).to eq(@merchant_1.id)
+      expect(@hash["data"]["attributes"]["name"]).to eq("#{@merchant_3.name}")
+      expect(@hash["data"]["attributes"]["id"]).to eq(@merchant_3.id)
 
+      expect(@hash.to_s).not_to include("#{@merchant_1.name}")
       expect(@hash.to_s).not_to include("#{@merchant_2.name}")
-      expect(@hash.to_s).not_to include("#{@merchant_3.name}")
     end
   end
 end
