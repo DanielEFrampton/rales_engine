@@ -81,7 +81,7 @@ RSpec.describe 'As a visitor', type: :request do
 
     describe 'by their created_at attribute' do
       before(:each) do
-        get "/api/v1/merchants/find_all?created_at=#{@m_3.created_at.to_s}"
+        get "/api/v1/merchants/find_all?created_at=#{@m_3.created_at}"
         @hash = JSON.parse(response.body)
       end
 
