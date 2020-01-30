@@ -1,7 +1,7 @@
 class Api::V1::Merchants::FindController < ApplicationController
   def show
     if parameters[:name]
-      render json: MerchantSerializer.new(Merchant.case_insensitive_name_find(parameters[:name]))
+      render json: MerchantSerializer.new(Merchant.ci_name_find(parameters[:name]))
     else
       render json: MerchantSerializer.new(Merchant.find_by(parameters))
     end
@@ -9,7 +9,7 @@ class Api::V1::Merchants::FindController < ApplicationController
 
   def index
     if parameters[:name]
-      render json: MerchantSerializer.new(Merchant.case_insensitive_name_find_all(parameters[:name]))
+      render json: MerchantSerializer.new(Merchant.ci_name_find_all(parameters[:name]))
     else
       render json: MerchantSerializer.new(Merchant.where(parameters))
     end
@@ -17,7 +17,7 @@ class Api::V1::Merchants::FindController < ApplicationController
 
   private
 
-    def parameters
-      params.permit(:name, :id, :created_at, :updated_at)
-    end
+  def parameters
+    params.permit(:name, :id, :created_at, :updated_at)
+  end
 end

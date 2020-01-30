@@ -7,11 +7,11 @@ class Merchant < ApplicationRecord
   has_many :items
   has_many :invoices
 
-  def self.case_insensitive_name_find(name)
+  def self.ci_name_find(name)
     where('LOWER(merchants.name) = LOWER(?)', name).first
   end
 
-  def self.case_insensitive_name_find_all(name)
+  def self.ci_name_find_all(name)
     where('LOWER(merchants.name) = LOWER(?)', name)
   end
 end
