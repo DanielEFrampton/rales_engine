@@ -4,18 +4,20 @@
 class Api::V1::Merchants::FindController < ApplicationController
   def show
     if parameters[:name]
-      render json: MerchantSerializer.new(Merchant.ci_name_find(parameters[:name]))
+      merchant = Merchant.ci_name_find(parameters[:name])
     else
-      render json: MerchantSerializer.new(Merchant.find_by(parameters))
+      merchant = Merchant.find_by(parameters)
     end
+    render json: MerchantSerializer.new(merchant)
   end
 
   def index
     if parameters[:name]
-      render json: MerchantSerializer.new(Merchant.ci_name_find_all(parameters[:name]))
+      merchants = Merchant.ci_name_find_all(parameters[:name])
     else
-      render json: MerchantSerializer.new(Merchant.where(parameters))
+      merchants = Merchant.where(parameters)
     end
+    render json: MerchantSerializer.new(merchants)
   end
 
   private
