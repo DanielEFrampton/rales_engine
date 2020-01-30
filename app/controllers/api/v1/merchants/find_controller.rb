@@ -12,7 +12,7 @@ class Api::V1::Merchants::FindController < ApplicationController
   end
 
   def index
-    merchant = if parameters[:name]
+    merchants = if parameters[:name]
                  merchants = Merchant.ci_name_find_all(name)
                else
                  merchants = Merchant.where(parameters)
