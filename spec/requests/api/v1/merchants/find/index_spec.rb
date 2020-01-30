@@ -145,7 +145,6 @@ RSpec.describe 'As a visitor', type: :request do
         expect(@hash["data"][2]["attributes"]["name"]).to eq("#{@merchant_7.name}")
         expect(@hash["data"][2]["attributes"]["id"]).to eq(@merchant_7.id)
 
-
         expect(@hash.to_s).not_to include("#{@merchant_1.name}")
         expect(@hash.to_s).not_to include("#{@merchant_2.name}")
         expect(@hash.to_s).not_to include("#{@merchant_3.name}")
