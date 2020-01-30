@@ -4,7 +4,7 @@
 class Api::V1::Merchants::FindController < ApplicationController
   def show
     merchant = if parameters[:name]
-                 Merchant.ci_name_find(name)
+                 Merchant.ci_name_find(parameters[:name])
                else
                  Merchant.find_by(parameters)
                end
@@ -13,7 +13,7 @@ class Api::V1::Merchants::FindController < ApplicationController
 
   def index
     merchants = if parameters[:name]
-                  merchants = Merchant.ci_name_find_all(name)
+                  merchants = Merchant.ci_name_find_all(parameters[:name])
                 else
                   merchants = Merchant.where(parameters)
                 end
