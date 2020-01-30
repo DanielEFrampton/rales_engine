@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Controller for Find Single Merchant Endpoint
 class Api::V1::Merchants::FindController < ApplicationController
   def show
     if parameters[:name]
