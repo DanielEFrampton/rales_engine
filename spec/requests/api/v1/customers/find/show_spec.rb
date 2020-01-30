@@ -86,9 +86,9 @@ RSpec.describe 'As a visitor', type: :request do
         expect(attributes['last_name']).to eq(@customer_4.last_name.to_s)
         expect(attributes['id']).to eq(@customer_4.id)
 
-        expect(@hash.to_s).not_to include(@customer_1.name.to_s)
-        expect(@hash.to_s).not_to include(@customer_2.name.to_s)
-        expect(@hash.to_s).not_to include(@customer_3.name.to_s)
+        expect(@hash.to_s).not_to include(@customer_1.id.to_s)
+        expect(@hash.to_s).not_to include(@customer_2.id.to_s)
+        expect(@hash.to_s).not_to include(@customer_3.id.to_s)
       end
     end
 
@@ -113,9 +113,9 @@ RSpec.describe 'As a visitor', type: :request do
         expect(attributes['last_name']).to eq(@customer_1.last_name.to_s)
         expect(attributes['id']).to eq(@customer_1.id)
 
-        expect(@hash.to_s).not_to include(@customer_2.name)
-        expect(@hash.to_s).not_to include(@customer_3.name)
-        expect(@hash.to_s).not_to include(@customer_4.name)
+        expect(@hash.to_s).not_to include(@customer_2.id.to_s)
+        expect(@hash.to_s).not_to include(@customer_3.id.to_s)
+        expect(@hash.to_s).not_to include(@customer_4.id.to_s)
       end
     end
 
@@ -140,9 +140,9 @@ RSpec.describe 'As a visitor', type: :request do
         expect(attributes['last_name']).to eq(@customer_3.last_name.to_s)
         expect(attributes['id']).to eq(@customer_3.id)
 
-        expect(@hash.to_s).not_to include(@customer_1.name)
-        expect(@hash.to_s).not_to include(@customer_2.name)
-        expect(@hash.to_s).not_to include(@customer_4.name)
+        expect(@hash.to_s).not_to include(@customer_1.id.to_s)
+        expect(@hash.to_s).not_to include(@customer_2.id.to_s)
+        expect(@hash.to_s).not_to include(@customer_4.id.to_s)
       end
     end
   end
