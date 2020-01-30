@@ -1,15 +1,23 @@
 class Api::V1::Merchants::FindController < ApplicationController
   def show
-    search_params = parameters
-    render json: MerchantSerializer.new(Merchant.find_by(search_params))
+    if parameters[:name]
+      render json: MerchantSerializer.new(Merchant.case_insensitive_name_find(parameters[:name]))
+    else
+      render json: MerchantSerializer.new(Merchant.find_by(parameters))
+    end
+  end
+
+  def index
+    if parameters[:name]
+      render json: MerchantSerializer.new(Merchant.case_insensitive_name_find_all(parameters[:name]))
+    else
+      render json: MerchantSerializer.new(Merchant.where(parameters))
+    end
   end
 
   private
 
     def parameters
-      if params[:name]
-        params[:name] = params[:name].titlecase
-      end
       params.permit(:name, :id, :created_at, :updated_at)
     end
 end
