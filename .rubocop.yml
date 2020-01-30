@@ -2,4 +2,4 @@ Naming/VariableNumber:
   EnforcedStyle: snake_case
 
 Metrics/BlockLength:
-  ExcludedMethods: describe
+  ExcludedMethods: describe, it
