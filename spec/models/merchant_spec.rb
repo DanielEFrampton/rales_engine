@@ -17,22 +17,22 @@ RSpec.describe Merchant, type: :model do
     describe 'class methods' do
       describe 'case_insensitive_name_find' do
         it 'returns single record with matching name regardless of case' do
-          @merchant_1 = create(:merchant, name: "Patrick McKelly")
+          @merchant_1 = create(:merchant, name: 'Patrick McKelly')
           @merchant_2 = create(:merchant)
 
-          found = Merchant.case_insensitive_name_find("patrIck mckeLly")
+          found = Merchant.case_insensitive_name_find('patrIck mckeLly')
           expect(found).to eq(@merchant_1)
         end
       end
 
       describe 'case_insensitive_name_find_all' do
         it 'returns all records with matching name regardless of case' do
-          @merchant_1 = create(:merchant, name: "Patrick McKelly")
+          @merchant_1 = create(:merchant, name: 'Patrick McKelly')
           @merchant_2 = create(:merchant)
           @merchant_3 = create(:merchant)
-          @merchant_4 = create(:merchant, name: "Patrick McKelly")
+          @merchant_4 = create(:merchant, name: 'Patrick McKelly')
 
-          found = Merchant.case_insensitive_name_find_all("patrIck mckeLly")
+          found = Merchant.case_insensitive_name_find_all('patrIck mckeLly')
           expect(found).to eq([@merchant_1, @merchant_4])
         end
       end
