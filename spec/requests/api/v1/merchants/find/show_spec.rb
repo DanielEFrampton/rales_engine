@@ -19,7 +19,7 @@ RSpec.describe 'As a visitor', type: :request do
 
       it 'I get a JSON:API response containing attributes of that merchant' do
         expect(@hash.class).to eq(Hash)
-        expect(@hash.keys).to eq(["data"])
+        expect(@hash.keys).to eq(['data'])
         expect(@hash['data'].length).to eq(3)
         expect(@hash['data'].class).to eq(Hash)
 
@@ -63,7 +63,7 @@ RSpec.describe 'As a visitor', type: :request do
 
     describe 'by its created_at attribute' do
       before(:each) do
-        get "/api/v1/merchants/find?created_at=#{@merchant_1.created_at.to_s}"
+        get "/api/v1/merchants/find?created_at=#{@merchant_1.created_at}"
         @hash = JSON.parse(response.body)
       end
 
@@ -88,7 +88,7 @@ RSpec.describe 'As a visitor', type: :request do
 
     describe 'by its updated_at attribute' do
       before(:each) do
-        get "/api/v1/merchants/find?updated_at=#{@merchant_3.updated_at.to_s}"
+        get "/api/v1/merchants/find?updated_at=#{@merchant_3.updated_at}"
         @hash = JSON.parse(response.body)
       end
 
@@ -104,7 +104,6 @@ RSpec.describe 'As a visitor', type: :request do
         expect(@hash['data']['attributes'].length).to eq(2)
         expect(@hash['data']['attributes']['name']).to eq(@merchant_3.name.to_s)
         expect(@hash['data']['attributes']['id']).to eq(@merchant_3.id)
-
 
         expect(@hash.to_s).not_to include(@merchant_1.name)
         expect(@hash.to_s).not_to include(@merchant_2.name)
