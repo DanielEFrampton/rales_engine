@@ -19,27 +19,40 @@ RSpec.describe 'As a visitor', type: :request do
       expect(@hash.class).to eq(Hash)
       expect(@hash.keys).to eq(['data'])
       expect(@hash['data'].length).to eq(3)
+      expect(@hash['data'].class).to eq(Array)
 
       expect(@hash['data'][0]['id']).to eq(@c_1.id.to_s)
       expect(@hash['data'][0]['type']).to eq('customer')
-      expect(@hash['data'][0]['attributes'].class).to eq(Hash)
-      expect(@hash['data'][0]['attributes'].length).to eq(2)
-      expect(@hash['data'][0]['attributes']['name']).to eq(@c_1.name.to_s)
-      expect(@hash['data'][0]['attributes']['id']).to eq(@c_1.id)
+
+      attributes_1 = @hash['data'][0]['attributes']
+
+      expect(attributes_1.class).to eq(Hash)
+      expect(attributes_1.length).to eq(3)
+      expect(attributes_1['first_name']).to eq(@c_1.first_name.to_s)
+      expect(attributes_1['last_name']).to eq(@c_1.last_name.to_s)
+      expect(attributes_1['id']).to eq(@c_1.id)
 
       expect(@hash['data'][1]['id']).to eq(@c_2.id.to_s)
       expect(@hash['data'][1]['type']).to eq('customer')
-      expect(@hash['data'][1]['attributes'].class).to eq(Hash)
-      expect(@hash['data'][1]['attributes'].length).to eq(2)
-      expect(@hash['data'][1]['attributes']['name']).to eq(@c_2.name.to_s)
-      expect(@hash['data'][1]['attributes']['id']).to eq(@c_2.id)
+
+      attributes_2 = @hash['data'][1]['attributes']
+
+      expect(attributes_2.class).to eq(Hash)
+      expect(attributes_2.length).to eq(3)
+      expect(attributes_2['first_name']).to eq(@c_2.first_name.to_s)
+      expect(attributes_2['last_name']).to eq(@c_2.last_name.to_s)
+      expect(attributes_2['id']).to eq(@c_2.id)
 
       expect(@hash['data'][2]['id']).to eq(@c_3.id.to_s)
       expect(@hash['data'][2]['type']).to eq('customer')
-      expect(@hash['data'][2]['attributes'].class).to eq(Hash)
-      expect(@hash['data'][2]['attributes'].length).to eq(2)
-      expect(@hash['data'][2]['attributes']['name']).to eq(@c_3.name.to_s)
-      expect(@hash['data'][2]['attributes']['id']).to eq(@c_3.id)
+
+      attributes_3 = @hash['data'][2]['attributes']
+
+      expect(attributes_3.class).to eq(Hash)
+      expect(attributes_3.length).to eq(3)
+      expect(attributes_3['first_name']).to eq(@c_3.first_name.to_s)
+      expect(attributes_3['last_name']).to eq(@c_3.last_name.to_s)
+      expect(attributes_3['id']).to eq(@c_3.id)
     end
   end
 end
