@@ -8,8 +8,7 @@ task import: :environment do
   models.reverse.each do |model|
     CSV.foreach("./data/#{model.to_s.underscore + 's'}.csv",
                 headers: true,
-                header_converters: :symbol,
-                converters: :all) do |row|
+                header_converters: :symbol) do |row|
       model.create!(row.to_h)
     end
   end

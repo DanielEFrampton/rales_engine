@@ -1,0 +1,8 @@
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+
+Metrics/BlockLength:
+  ExcludedMethods: describe, it
+
+Style/SymbolArray:
+  Enabled: false
