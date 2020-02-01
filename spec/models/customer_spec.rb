@@ -39,6 +39,7 @@ RSpec.describe Customer, type: :model do
           @transaction_1 = create(:transaction, invoice: @invoice_6)
 
           expect(Customer.favorite_customer(@merchant.id)).to eq(@customer_2)
+          expect(Customer.favorite_customer(@merchant_2.id)).to eq(@customer_5)
         end
       end
     end
