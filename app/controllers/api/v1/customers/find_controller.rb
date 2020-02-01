@@ -3,11 +3,11 @@
 # Controller for Find Single Customer Endpoint
 class Api::V1::Customers::FindController < ApplicationController
   def show
-    render json: CustomerSerializer.new(found_records(:find_by))
+    render json: CustomerSerializer.new(found_records(:ci_find, :find_by))
   end
 
   def index
-    render json: CustomerSerializer.new(found_records(:where))
+    render json: CustomerSerializer.new(found_records(:ci_find_all, :where))
   end
 
   private
@@ -24,11 +24,11 @@ class Api::V1::Customers::FindController < ApplicationController
     parameters.values.first
   end
 
-  def found_records(method)
+  def found_records(name_method, other_method)
     if ["first_name", "last_name"].include?(attribute)
-      Customer.ci_find(attribute, value)
+      Customer.send(name_method, attribute, value)
     else
-      Customer.send(method, attribute => value)
+      Customer.send(other_method, attribute => value)
     end
   end
 end
