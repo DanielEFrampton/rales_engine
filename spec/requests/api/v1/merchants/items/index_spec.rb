@@ -32,8 +32,6 @@ RSpec.describe 'As a visitor', type: :request do
         expect(attributes['name']).to eq(@items[index].name)
         expect(attributes['description']).to eq(@items[index].description)
         expect(attributes['unit_price']).to eq(@items[index].unit_price)
-        expect(attributes['created_at']).to eq(@items[index].created_at)
-        expect(attributes['updated_at']).to eq(@items[index].updated_at)
         expect(attributes['merchant_id']).to eq(@items[index].merchant_id)
       end
     end
