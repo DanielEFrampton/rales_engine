@@ -46,7 +46,7 @@ RSpec.describe 'As a visitor', type: :request do
 
   describe 'when I send a request to customers/:id/favorite_merchant' do
     before(:each) do
-      get "/api/v1/customers/#{@customer_1}/favorite_merchant"
+      get "/api/v1/customers/#{@customer_1.id}/favorite_merchant"
       @json = JSON.parse(response.body)
     end
 
