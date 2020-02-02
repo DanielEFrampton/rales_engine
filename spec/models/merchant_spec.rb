@@ -15,6 +15,53 @@ RSpec.describe Merchant, type: :model do
 
   describe 'methods' do
     describe 'class methods' do
+      describe 'favorite_merchant' do
+        it 'returns merchant customer has most successful transactions with' do
+          @customer_1 = create(:customer)
+          @merchant_1 = create(:merchant)
+          @merchant_2 = create(:merchant)
+          @merchant_3 = create(:merchant)
+
+          1.times do
+            invoice_1 = create(:invoice, customer: @customer_1, merchant: @merchant_1)
+            item_1 = create(:item, merchant: @merchant_1)
+            create(:invoice_item, item: item_1, invoice: invoice_1)
+            create(:transaction, invoice: invoice_1)
+
+            invoice_2 = create(:invoice, customer: @customer_1, merchant: @merchant_1)
+            item_2 = create(:item, merchant: @merchant_1)
+            create(:invoice_item, item: item_2, invoice: invoice_2)
+            create(:transaction, invoice: invoice_2, result: 'failed')
+          end
+
+          3.times do
+            invoice_1 = create(:invoice, customer: @customer_1, merchant: @merchant_2)
+            item_1 = create(:item, merchant: @merchant_2)
+            create(:invoice_item, item: item_1, invoice: invoice_1)
+            create(:transaction, invoice: invoice_1)
+
+            invoice_2 = create(:invoice, customer: @customer_1, merchant: @merchant_2)
+            item_2 = create(:item, merchant: @merchant_2)
+            create(:invoice_item, item: item_2, invoice: invoice_2)
+            create(:transaction, invoice: invoice_2, result: 'failed')
+          end
+
+          2.times do
+            invoice_1 = create(:invoice, customer: @customer_1, merchant: @merchant_3)
+            item_1 = create(:item, merchant: @merchant_3)
+            create(:invoice_item, item: item_1, invoice: invoice_1)
+            create(:transaction, invoice: invoice_1)
+
+            invoice_2 = create(:invoice, customer: @customer_1, merchant: @merchant_3)
+            item_2 = create(:item, merchant: @merchant_3)
+            create(:invoice_item, item: item_2, invoice: invoice_2)
+            create(:transaction, invoice: invoice_1, result: 'failed')
+          end
+
+          expect(Merchant.favorite_merchant(@customer_1.id)).to eq(@merchant_2)
+        end
+      end
+
       describe 'most_revenue' do
         it 'returns x merchants sorted by most revenue' do
           @merchant_1 = create(:merchant)
