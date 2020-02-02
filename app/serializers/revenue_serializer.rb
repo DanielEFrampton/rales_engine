@@ -4,11 +4,10 @@ class RevenueSerializer
     @date = date
   end
 
-  def to_json
+  def to_hash
     { data: {
         attributes: {
-          total_revenue: @revenue,
-          date: @date
+          total_revenue: sprintf("%.2f", @revenue)
         }
       }
     }
