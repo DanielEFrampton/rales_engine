@@ -23,6 +23,10 @@ Rails.application.routes.draw do
         get '/random', to: 'random#show'
         get '/:id', to: 'customers#show'
       end
+
+      namespace :items do
+        get '/most_revenue', to: 'most_revenue#index'
+      end
     end
   end
 end
