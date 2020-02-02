@@ -11,6 +11,7 @@ Rails.application.routes.draw do
         get '/:id', to: 'merchants#show'
         get '/:merchant_id/items', to: 'items#index'
         get '/:merchant_id/invoices', to: 'invoices#index'
+        get '/:merchant_id/favorite_customer', to: 'favorite_customer#show'
       end
 
       namespace :customers do

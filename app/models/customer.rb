@@ -5,4 +5,15 @@ class Customer < ApplicationRecord
   validates_presence_of :first_name, :last_name
 
   has_many :invoices
+
+  def self.favorite_customer(merchant_id)
+    select('customers.*, count(transactions.id) AS total_transactions')
+      .joins(invoices: :transactions)
+      .where(transactions: { result: 'success' } )
+      .where(invoices: { merchant_id: merchant_id })
+      .order('total_transactions DESC')
+      .group(:id)
+      .limit(1)
+      .first
+  end
 end
