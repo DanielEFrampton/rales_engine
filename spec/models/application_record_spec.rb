@@ -35,5 +35,11 @@ RSpec.describe ApplicationRecord, type: :model do
         expect(found_records_3).to eq([@customer_4])
       end
     end
+
+    describe 'random' do
+      it 'returns a random record in model' do
+        expect(Customer.random).to be_instance_of(Customer)
+      end
+    end
   end
 end
