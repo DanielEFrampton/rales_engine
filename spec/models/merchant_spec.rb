@@ -52,13 +52,13 @@ RSpec.describe Merchant, type: :model do
                         @merchant_4, @merchant_1, @merchant_3]
 
           expect(Merchant.most_revenue(3)).to eq(expected_top_3)
-          expect(Merchant.most_revenue(1)).to eq(@merchant_5)
+          expect(Merchant.most_revenue(1)).to eq([@merchant_5])
           expect(Merchant.most_revenue(-1)).to eq([])
           expect(Merchant.most_revenue(0)).to eq([])
           expect(Merchant.most_revenue(7)).to eq(all_ordered)
         end
       end
-      
+
       describe 'ci_name_find' do
         it 'returns single record with matching name regardless of case' do
           @merchant_1 = create(:merchant, name: 'Patrick McKelly')
