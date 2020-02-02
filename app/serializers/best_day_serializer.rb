@@ -6,7 +6,7 @@ class BestDaySerializer
   def to_hash
     { data: {
         attributes: {
-          best_day: date
+          best_day: @date.strftime("%Y-%m-%d")
         }
       }
     }
