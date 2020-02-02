@@ -2,9 +2,9 @@
 
 FactoryBot.define do
   factory :item do
-    name { 'MyText' }
-    description { 'MyText' }
-    unit_price { 1 }
+    name { Faker::Commerce.product_name }
+    description { Faker::Movies::Hobbit.quote }
+    unit_price { rand(100..50000) }
     merchant { nil }
   end
 end
