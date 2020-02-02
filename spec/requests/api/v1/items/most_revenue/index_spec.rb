@@ -39,7 +39,6 @@ RSpec.describe 'As a visitor', type: :request do
                               item: @item_4,
                               quantity: 2,
                               unit_price: 400)
-
   end
 
   describe 'when I send a request to the items/most_revenue endpoint' do
