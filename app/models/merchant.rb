@@ -16,7 +16,7 @@ class Merchant < ApplicationRecord
   end
 
   def self.most_revenue(quantity)
-    scrubbed_quantity = [quantity, 0].max
+    scrubbed_quantity = [quantity.to_i, 0].max
     joins(invoices: [:transactions, :invoice_items])
       .where(transactions: { result: 'success' })
       .select('merchants.*,
