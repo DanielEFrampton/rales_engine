@@ -7,6 +7,8 @@ RSpec.describe 'As a visitor', type: :request do
 
     @invoice_1 = create(:invoice, merchant: @merchant, customer: @customer)
     @invoice_2 = create(:invoice, merchant: @merchant, customer: @customer)
+    @transaction_1 = create(:transaction, invoice: @invoice_1)
+    @transaction_2 = create(:transaction, invoice: @invoice_2)
 
     @item_1 = create(:item, merchant: @merchant)  # #4, revenue: 6.00
     @item_2 = create(:item, merchant: @merchant)  # #2, revenue: 9.00
@@ -54,7 +56,7 @@ RSpec.describe 'As a visitor', type: :request do
         expect(@json['data'].length).to eq(3)
 
         expected = [@item_3, @item_2, @item_4]
-        item_data = @hash['data']
+        item_data = @json['data']
         item_data.each_with_index do |item, index|
           expect(item['id']).to eq(expected[index].id.to_s)
           expect(item['type']).to eq('item')

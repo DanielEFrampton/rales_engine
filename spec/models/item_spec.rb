@@ -29,6 +29,8 @@ RSpec.describe Item, type: :model do
           @invoice_2 = create(:invoice,
                               merchant: @merchant,
                               customer: @customer)
+          @transaction_1 = create(:transaction, invoice: @invoice_1)
+          @transaction_2 = create(:transaction, invoice: @invoice_2)
 
           @item_1 = create(:item, merchant: @merchant)  # #4, revenue: 6.00
           @item_2 = create(:item, merchant: @merchant)  # #2, revenue: 9.00
