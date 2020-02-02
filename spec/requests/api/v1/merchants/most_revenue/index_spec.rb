@@ -45,13 +45,3 @@ RSpec.describe 'As a visitor', type: :request do
     end
   end
 end
-
-
-# total revenue =
-#   quantity * unit price on invoice_items
-#   where transactions.result = 'success'
-#   joins merchants, invoices, transactions, invoice_items
-#   select merchants.*, sum(quantity * unit price on invoice_items) AS total_r
-#   group by merchants.id
-#   order by total_r
-#   limit by quantity
