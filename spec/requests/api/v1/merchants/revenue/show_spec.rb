@@ -59,9 +59,8 @@ RSpec.describe 'As a visitor', type: :request do
         expect(@json['data'].length).to eq(1)
 
         attributes = @json['data']['attributes']
-        expect(attributes.length).to eq(2)
-        expect(attributes['total_revenue']).to eq(60.00)
-        expect(attributes['date_queried']).to eq('2012-03-16')
+        expect(attributes.length).to eq(1)
+        expect(attributes['total_revenue']).to eq("60.00")
       end
     end
 
@@ -78,9 +77,8 @@ RSpec.describe 'As a visitor', type: :request do
         expect(@json['data'].length).to eq(1)
 
         attributes = @json['data']['attributes']
-        expect(attributes.length).to eq(2)
-        expect(attributes['total_revenue']).to eq(0.00)
-        expect(attributes['date_queried']).to eq('2012-05-23')
+        expect(attributes.length).to eq(1)
+        expect(attributes['total_revenue']).to eq("0.00")
       end
     end
   end
