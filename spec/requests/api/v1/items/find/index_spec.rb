@@ -60,7 +60,7 @@ RSpec.describe 'As a visitor', type: :request do
         expect(@json.class).to eq(Hash)
         expect(@json.keys).to eq(['data'])
         expect(@json['data'].class).to eq(Array)
-        expect(@json['data'].length).to eq(2)
+        expect(@json['data'].length).to eq(1)
 
         expected = [@item_1]
         @json['data'].each_with_index do |item, index|
@@ -91,7 +91,7 @@ RSpec.describe 'As a visitor', type: :request do
         expect(@json['data'].class).to eq(Array)
         expect(@json['data'].length).to eq(2)
 
-        expected = [@item_5, @item_10]
+        expected = [@item_5, @item_11]
         @json['data'].each_with_index do |item, index|
           expect(item['id']).to eq(expected[index].id.to_s)
           expect(item['type']).to eq('item')
