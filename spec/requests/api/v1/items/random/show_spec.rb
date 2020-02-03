@@ -16,9 +16,9 @@ RSpec.describe 'As a visitor', type: :request do
                      @item_2.merchant_id,
                      @item_3.merchant_id]
     @ids = [@item_1.id, @item_2.id, @item_3.id]
-    @unit_prices = [@item_1.unit_price_decimal.to_s,
-                    @item_2.unit_price_decimal.to_s,
-                    @item_3.unit_price_decimal.to_s]
+    @unit_prices = [sprintf('%.2f', @item_1.unit_price_decimal),
+                    sprintf('%.2f', @item_2.unit_price_decimal),
+                    sprintf('%.2f', @item_3.unit_price_decimal)]
   end
 
   describe 'when I send a get request to the customers random path' do
