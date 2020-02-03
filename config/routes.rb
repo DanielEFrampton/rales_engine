@@ -42,6 +42,7 @@ Rails.application.routes.draw do
       namespace :invoices do
         get '/', to: 'invoices#index'
         get '/random', to: 'random#show'
+        get '/find', to: 'find#show'
         get '/:id', to: 'invoices#show'
         get '/:id/customer', to: 'customer#show'
         get '/:id/merchant', to: 'merchant#show'
