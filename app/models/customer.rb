@@ -5,6 +5,7 @@ class Customer < ApplicationRecord
   validates_presence_of :first_name, :last_name
 
   has_many :invoices
+  has_many :transactions, through: :invoices
 
   def self.favorite_customer(merchant_id)
     select('customers.*, count(transactions.id) AS total_transactions')
