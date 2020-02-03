@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       end
 
       namespace :items do
+        get '/', to: 'items#index'
         get '/most_revenue', to: 'most_revenue#index'
         get '/:id', to: 'items#show'
         get '/:id/best_day', to: 'best_day#show'
