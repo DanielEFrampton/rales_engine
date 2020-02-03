@@ -1,4 +1,4 @@
-# RalesEngine
+invoices# RalesEngine
 
 RalesEngine is an API developed by [Daniel Frampton](https://github.com/DanielEFrampton) for the Back-End Engineering program at [Turing School of Software & Design](https://turing.io).
 
@@ -181,7 +181,112 @@ Wherever a word is prefixed by a colon in an API endpoint path, it is a placehol
     created_at | search based on created_at timestamp | YYYY-MM-DD HH:MM:SS
     updated_at | search based on updated_at timestamp | YYYY-MM-DD HH:MM:SS
 
+#### Invoices
+
+- Single Invoice Record
+```
+/invoices/:customer_id
+```
+- All Invoice Records
+```
+/invoices/
+```
+- Random Invoice Record
+```
+/invoices/random
+```
+- Find Single Invoices By Query Parameter
+```
+/invoices/find?parameter=value
+```
+- Find Multiple Invoices by Query Parameter
+```
+/invoices/find_all?parameter=value
+```
+
+Supported Parameters:
+
+parameter | description | value type/format
+-- | -- | --
+id | search based on the primary key | integer
+status | search based on the status attribute | string (case-insensitive)
+customer_id | search based on the customer_id foreign key | integer
+merchant_id | search based on the merchant_id foreign key | integer
+created_at | search based on created_at timestamp | YYYY-MM-DD HH:MM:SS
+updated_at | search based on updated_at timestamp | YYYY-MM-DD HH:MM:SS
+
+#### InvoiceItems
+
+- Single InvoiceItem Record
+```
+/invoice_items/:customer_id
+```
+- All InvoiceItem Records
+```
+/invoice_items/
+```
+- Random InvoiceItem Record
+```
+/invoice_items/random
+```
+- Find Single InvoiceItem Record By Query Parameter
+```
+/invoice_items/find?parameter=value
+```
+- Find Multiple InvoiceItem Records by Query Parameter
+```
+/invoice_items/find_all?parameter=value
+```
+
+Supported Parameters:
+
+parameter | description | value type/format
+-- | -- | --
+id | search based on the primary key | integer
+quantity | search based on the quantity attribute | integer
+unit_price | search based on the unit_price attribute | float with 2 decimal places
+invoice_id | search based on the invoice_id foreign key | integer
+item_id | search based on the item_id foreign key | integer
+created_at | search based on created_at timestamp | YYYY-MM-DD HH:MM:SS
+updated_at | search based on updated_at timestamp | YYYY-MM-DD HH:MM:SS
+
+#### Transactions
+
+- Single Transaction Record
+```
+/transactions/:customer_id
+```
+- All Transaction Records
+```
+/transactions/
+```
+- Random Transaction Record
+```
+/transactions/random
+```
+- Find Single Transaction Record By Query Parameter
+```
+/transactions/find?parameter=value
+```
+- Find Multiple Transaction Records by Query Parameter
+```
+/transactions/find_all?parameter=value
+```
+
+Supported Parameters:
+
+parameter | description | value type/format
+-- | -- | --
+id | search based on the primary key | integer
+result | search based on the result attribute | string (case-insensitive)
+credit_card_number | based on the credit_card_number attribute | varchar(16)
+invoice_id | search based on the invoice_id foreign key | integer
+created_at | search based on created_at timestamp | YYYY-MM-DD HH:MM:SS
+updated_at | search based on updated_at timestamp | YYYY-MM-DD HH:MM:SS
+
 ### Relationship Endpoints
+
+#### Merchants
 
 - Merchant-Items (collection of all items associated with given merchant)
 ```
@@ -190,6 +295,61 @@ Wherever a word is prefixed by a colon in an API endpoint path, it is a placehol
 - Merchant-Invoices (collection of all invoices associated with given merchant)
 ```
 /merchants/:merchant_id/invoices
+```
+
+#### Invoices
+
+- Invoice-Transactions (collection of all transactions associated with given invoice)
+```
+/invoices/:invoice_id/transactions
+```
+
+- Invoice-InvoiceItems (collection of all InvoiceItem records associated with given invoice)
+```
+/invoices/:invoice_id/invoice_items
+```
+- Invoice-Items (collection of all items associated with given invoice)
+```
+/invoices/:invoice_id/items
+```
+- Invoice-Customer (single customer associated with given invoice)
+```
+/invoices/:invoice_id/customer
+```
+- Invoice-Merchant (single merchant associated with given invoice)
+```
+/invoices/:invoice_id/merchant
+```
+
+#### Items
+
+- Item-InvoiceItems (collection of all InvoiceItem records associated with given item)
+```
+/items/:item_id/invoice_items
+```
+
+- Item-Merchant (single merchant associated with given item)
+```
+/items/:item_id/merchant
+```
+
+
+#### Customers
+
+- Customer-Invoices (collection of all invoices associated with given customer)
+```
+/customer/:customer_id/invoices
+```
+- Customer-Transactions (collection of all transactions associated with given customer)
+```
+/customer/:customer_id/transactions
+```
+
+#### Transactions
+
+- Transaction-Invoice (single invoice associated with given transaction)
+```
+/transactions/:transaction_id/invoice
 ```
 
 ### Business Intelligence Endpoints
