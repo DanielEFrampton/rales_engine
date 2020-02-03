@@ -17,6 +17,17 @@ RSpec.describe Item, type: :model do
   end
 
   describe 'methods' do
+    describe 'instance methods' do
+      describe 'unit_price_decimal' do
+        it 'returns unit_price as float with two decimal places' do
+          @merchant = create(:merchant)
+          @item = create(:item, unit_price: 12345, merchant: @merchant)
+
+          expect(@item.unit_price_decimal).to eq(123.45)
+        end
+      end
+    end
+
     describe 'class methods' do
       describe 'best_day' do
         it 'returns date in YYYY-MM-DD format of date item had most revenue' do
