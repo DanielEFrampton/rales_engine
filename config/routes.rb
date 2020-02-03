@@ -63,6 +63,7 @@ Rails.application.routes.draw do
       end
 
       namespace :transactions do
+        get '/:id', to: 'transactions#show'
         get '/:id/invoice', to: 'invoice#show'
       end
     end
