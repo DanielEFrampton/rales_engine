@@ -3,13 +3,13 @@ require 'rails_helper'
 RSpec.describe 'As a visitor', type: :request do
   before(:each) do
     # Create enough test data to have 1-2 records match each search parameter
+    @c_3 = create(:customer, first_name: 'Daniel', last_name: 'Frampton')
+    @c_5 = create(:customer, last_name: 'Frampton')
+    @c_7 = create(:customer, first_name: 'Daniel')
     @c_1 = create(:customer, created_at: Time.zone.parse('2020-01-01'))
     @c_2 = create(:customer, updated_at: Time.zone.parse('2020-01-02'))
-    @c_3 = create(:customer, first_name: 'Daniel', last_name: 'Frampton')
     @c_4 = create(:customer, created_at: Time.zone.parse('2020-01-01'))
-    @c_5 = create(:customer, last_name: 'Frampton')
     @c_6 = create(:customer) # Candidate for search by ID
-    @c_7 = create(:customer, first_name: 'Daniel')
     @c_8 = create(:customer, updated_at: Time.zone.parse('2020-01-02'))
 
     # Provide plural name of resource being requested; interpolated below.

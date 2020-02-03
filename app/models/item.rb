@@ -8,6 +8,10 @@ class Item < ApplicationRecord
   has_many :invoice_items
   has_many :invoices, through: :invoice_items
 
+  def unit_price_decimal
+    unit_price / 100.0
+  end
+
   def self.best_day(item_id)
     joins(invoices: :transactions)
       .select("date_trunc('day', invoices.created_at) AS date")
