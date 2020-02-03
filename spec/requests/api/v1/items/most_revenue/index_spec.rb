@@ -65,7 +65,7 @@ RSpec.describe 'As a visitor', type: :request do
 
           expect(attributes['name']).to eq(expected[index].name)
           expect(attributes['description']).to eq(expected[index].description)
-          expect(attributes['unit_price']).to eq(expected[index].unit_price)
+          expect(attributes['unit_price']).to eq(sprintf("%.2f", (expected[index].unit_price / 100.0)))
           expect(attributes['merchant_id']).to eq(expected[index].merchant_id)
         end
       end
