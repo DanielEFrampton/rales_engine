@@ -21,4 +21,8 @@ class ApplicationRecord < ActiveRecord::Base
   def self.find_by(hash)
     order(:id).find_by(hash)
   end
+
+  def self.where(*arguments)
+    order(:id).where(*arguments)
+  end
 end
