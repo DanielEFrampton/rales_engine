@@ -6,4 +6,8 @@ class InvoiceItem < ApplicationRecord
 
   belongs_to :item
   belongs_to :invoice
+
+  def unit_price_decimal
+    unit_price / 100.0
+  end
 end
