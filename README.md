@@ -1,4 +1,4 @@
-invoices# RalesEngine
+# RalesEngine
 
 RalesEngine is an API developed by [Daniel Frampton](https://github.com/DanielEFrampton) for the Back-End Engineering program at [Turing School of Software & Design](https://turing.io).
 
@@ -109,16 +109,16 @@ Wherever a word is prefixed by a colon in an API endpoint path, it is a placehol
 ```
 /items/find_all?parameter=value
 ```
-    Supported Parameters:
-    parameter | description | value type/format
-    -- | -- | --
-    id | search based on the primary key | integer
-    name | search based on the name attribute | string (case-insensitive)
-    description | search based on the description attribute | string (case-insensitive)
-    merchant_id | search based on the merchant_id foreign key | integer
-    unit_price | search based on the unit_price attribute | float with 2 decimal places
-    created_at | search based on created_at timestamp | YYYY-MM-DD HH:MM:SS
-    updated_at | search based on updated_at timestamp | YYYY-MM-DD HH:MM:SS
+Supported Parameters:
+parameter | description | value type/format
+-- | -- | --
+id | search based on the primary key | integer
+name | search based on the name attribute | string (case-insensitive)
+description | search based on the description attribute | string (case-insensitive)
+merchant_id | search based on the merchant_id foreign key | integer
+unit_price | search based on the unit_price attribute | float with 2 decimal places
+created_at | search based on created_at timestamp | YYYY-MM-DD HH:MM:SS
+updated_at | search based on updated_at timestamp | YYYY-MM-DD HH:MM:SS
 
 #### Merchants
 
@@ -142,13 +142,13 @@ Wherever a word is prefixed by a colon in an API endpoint path, it is a placehol
 ```
 /merchants/find_all?parameter=value
 ```
-    Supported Parameters:
-    parameter | description | value type/format
-    -- | -- | --
-    id | search based on the primary key | integer
-    name | search based on the name attribute | string (case-insensitive)
-    created_at | search based on created_at timestamp | YYYY-MM-DD HH:MM:SS
-    updated_at | search based on updated_at timestamp | YYYY-MM-DD HH:MM:SS
+Supported Parameters:
+parameter | description | value type/format
+-- | -- | --
+id | search based on the primary key | integer
+name | search based on the name attribute | string (case-insensitive)
+created_at | search based on created_at timestamp | YYYY-MM-DD HH:MM:SS
+updated_at | search based on updated_at timestamp | YYYY-MM-DD HH:MM:SS
 
 #### Customers
 
@@ -172,14 +172,14 @@ Wherever a word is prefixed by a colon in an API endpoint path, it is a placehol
 ```
 /customers/find_all?parameter=value
 ```
-    Supported Parameters:
-    parameter | description | value type/format
-    -- | -- | --
-    id | search based on the primary key | integer
-    first_name | search based on the first_name attribute | string (case-insensitive)
-    last_name | search based on the last_name attribute | string (case-insensitive)
-    created_at | search based on created_at timestamp | YYYY-MM-DD HH:MM:SS
-    updated_at | search based on updated_at timestamp | YYYY-MM-DD HH:MM:SS
+Supported Parameters:
+parameter | description | value type/format
+-- | -- | --
+id | search based on the primary key | integer
+first_name | search based on the first_name attribute | string (case-insensitive)
+last_name | search based on the last_name attribute | string (case-insensitive)
+created_at | search based on created_at timestamp | YYYY-MM-DD HH:MM:SS
+updated_at | search based on updated_at timestamp | YYYY-MM-DD HH:MM:SS
 
 #### Invoices
 
