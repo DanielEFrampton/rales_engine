@@ -30,6 +30,7 @@ Rails.application.routes.draw do
         get '/most_revenue', to: 'most_revenue#index'
         get '/find', to: 'find#show'
         get '/find_all', to: 'find#index'
+        get '/random', to: 'random#show'
         get '/:id', to: 'items#show'
         get '/:id/best_day', to: 'best_day#show'
       end
